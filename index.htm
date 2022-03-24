@@ -1,0 +1,130 @@
+<!doctype html>
+
+<html>
+  <head>
+    <style>
+      body {
+  margin:50px;
+}
+* {
+  box-sizing: border-box;
+}
+input {
+  display:block;
+  width:100%;
+  margin:10px 0;
+  padding:10px;
+}
+.type {
+  border-radius:20px;
+  border: 1px solid #eee;
+  transition: .3s border-color;
+  color: rgba(0,0,0,0.9)
+}
+.type:hover {
+  border: 1px solid #aaa;
+}
+    </style>
+  </head>
+
+  <body>
+    <h1>Сумма чисел</h1>
+ 
+    
+    <table>
+      <tr>
+        <td>
+<input class=type type="text" id="number1" placeholder="Введите первое число">
+        </td>
+        <td>
+          +
+       </td>
+        <td>
+<input class=type type="text" id="number2" placeholder="Введите второе число">
+        </td>
+         <td>
+           <button onclick="addition1()">Сумма</button>
+         </td>
+         <td> Сумма= 
+        </td> 
+         <td class="rightcol"> <div id="sum"> Неизвестно </div> <div id="alert_text"> </div> 
+        </td>
+
+    
+    </table>
+
+
+<script>
+
+  
+function addition1() {            //Основная функция которая выполняет все
+
+    var a = parseFloat(document.getElementById('number1').value); //парсит из инпута для того чтобы быть использованной ниже в качестве дробного числа(если брать не дробь будет некорректно считать)
+    var b = parseFloat(document.getElementById('number2').value);
+    
+
+
+if (document.getElementById('number1').value.indexOf(",") != -1  //выражение которое выполняется всегда. Нужно для того чтобы  каждый раз при нажатии выполнялись действия ниже.
+|| 
+document.getElementById('number1').value.indexOf([0]) != 0
+) {
+
+//   Методы для первого инпута (Удаляет все символы кроме 0-9 запятой и точки а потом заменяет одну запятую на точку и удаляет все остальные запятые)
+   c = document.getElementById('number1',).value;
+   document.getElementById('number1').value = c.replaceAll(/[^0-9,.]/g , "");
+   d = document.getElementById('number1').value;
+   document.getElementById('number1').value = d.replace(",", ".")
+   m = document.getElementById('number1').value;
+   document.getElementById('number1').value = m.replaceAll(",", "")
+
+
+//Тоже самое только для второго инпута
+   e = document.getElementById('number2',).value;
+   document.getElementById('number2').value = e.replaceAll(/[^0-9,.]/g, "");
+   z = document.getElementById('number2').value;
+   document.getElementById('number2').value = z.replace(",", ".")   
+   n = document.getElementById('number2').value;
+   document.getElementById('number2').value = n.replaceAll(",", "")
+
+}
+
+
+
+
+//Это условие означает - "Если строки инпута пусты то.." нужно для оповещения о ошибке и о том как ее исправить.
+if(document.getElementById('number1').value == "" && document.getElementById('number2').value == ""
+)
+{alert("Все поля ввода пусты. Введите число.");
+}
+else if(
+  document.getElementById('number2').value == "")
+{alert("Поле ввода 2 пусто. Введите число.");
+}
+else if(
+  document.getElementById('number1').value == "")
+{alert("Поле ввода 1 пусто. Введите число.");
+}
+
+// Еще раз парсит number1 и number2, нужно для того чтобы использовать актуальный value в выражениях ниже
+ var o = parseFloat(document.getElementById('number1').value); 
+ var k = parseFloat(document.getElementById('number2').value);
+
+
+//Это условие означает "Если 'a' или 'b' не числа то ..." это условие нужно для вывода слова "ошибка" на месте ответа на выражение
+   if (isNaN(a)==true | isNaN(b)==true)
+    {
+    
+     var alert_text = "Ошибка";  
+     document.getElementById("alert_text").innerHTML = alert_text; 
+     document.getElementById("sum").innerHTML = " "; 
+     }
+    else {
+      var s = o + k; 
+      sum.innerHTML =  s; 
+      document.getElementById("alert_text").innerHTML = " ";
+      }
+        }
+
+
+
+</script>
